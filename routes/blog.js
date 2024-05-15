@@ -27,6 +27,6 @@ router.get('/findone/:findId', blogcontroller.blogfindone );
 
 router.delete('/delete/:deleteId', blogcontroller.blogdelete );
 
-router.put('/update/:UpdateId', blogcontroller.blogupdate );
+router.put('/update/:UpdateId',  upload.single('image') , blogcontroller.blogupdate );
 
 module.exports = router;

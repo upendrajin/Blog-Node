@@ -82,7 +82,8 @@ exports.blogdelete = async function (req, res, next) {
 exports.blogupdate = async function (req, res, next) {
     try {
         let formdata = req.body
-        let blogUpdate = await BLOG.findByIdAndUpdate(req.params.UpdateId, formdata)
+        req.body.image = req.file.filename
+        let blogUpdate = await BLOG.findByIdAndUpdate(req.params.UpdateId, formdata , { new: true })
         res.status(201).json({
             status: "success",
             message: "blog update successfully",

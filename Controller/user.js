@@ -35,6 +35,29 @@ exports.usersignup = async function (req, res, next) {
     try {
         let formdata = req.body
         formdata.password = await bcrypt.hash(formdata.password, 8)
+        console.log(formdata.email); // Corrected typo here
+
+        // let transporter = nodemailer.createTransport({
+        //     service: "Gmail",
+        //     auth: {
+        //         user: "dholiyadhruv2023.katargam@gmail.com",
+        //         pass: "luiektllemgiykoa",
+        //     },
+        // });
+        // let mailOptions = {
+        //     from: "dholiyadhruv2023.katargam@gmail.com",
+        //     to: req.body.email,
+        //     subject: "Your Token Was Create Now You Can Use It For 2 Day's",
+        //     html: "<h2>dhfkjsdhfshdfshdflkslfd<h2>"
+        // };
+        // transporter.sendMail(mailOptions, (error, info) => {
+        //     if (error) {
+        //         return console.log("Error occurred:", error);
+        //     }
+        //     console.log("Message sent successfully!");
+        //     console.log("Message ID:", info.messageId);
+        // });
+        // console.log("Message sent: %s", info.messageId);
 
         let userCreate = await USER.create(formdata)
 
